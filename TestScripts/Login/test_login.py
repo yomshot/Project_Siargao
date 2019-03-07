@@ -8,7 +8,7 @@ class TestLoginForm:
         driver = self.driver
         run = Login(driver)
 
-        username = "#"
-        password = "#"
+        username = "ccylim@unionbankph.com"
+        password = "P@ssw0rd123!"
 
         run.login(username, password)
