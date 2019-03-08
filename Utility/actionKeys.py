@@ -11,11 +11,11 @@ class MakeAction(object):
         self.driver = driver
 
     def wait_until_element_visible(self, by, locator, wait=3):
-        by = helper.method_by(by) # check the method of finding the location
+        by = helper.method_by(by)
         try:
             element = WebDriverWait(self.driver, wait).until(
                 EC.visibility_of_element_located((by, locator))
-            ) # this is explicitly wait in selenium
+            )
             if element:
                 print("Element {0} Found".format(locator))
                 return True
@@ -30,7 +30,7 @@ class MakeAction(object):
         by = helper.method_by(by)
         try:
             element = WebDriverWait(self.driver, wait).until(
-                EC.invisibility_of_element_located((by, locator)) # this is explicitly wait in selenium
+                EC.invisibility_of_element_located((by, locator))
             )
             if element:
                 return True
@@ -39,10 +39,10 @@ class MakeAction(object):
             return False
 
     def click_element(self, by, locator, wait=7):
-        by = helper.method_by(by) # check the method of finding the location
+        by = helper.method_by(by)
         try:
             element = WebDriverWait(self.driver, wait).until(
-                EC.element_to_be_clickable((by, locator)) # this is explicitly wait in selenium
+                EC.element_to_be_clickable((by, locator))
             )
             element.click()
             print('Click Element || Element Found {0}'.format(locator))
@@ -52,10 +52,10 @@ class MakeAction(object):
             return False
 
     def find_elements(self, by: str, locator: str, wait=7):
-        by = helper.method_by(by) # check the method of finding the location
+        by = helper.method_by(by)
         try:
             element = WebDriverWait(self.driver, int(wait)).until(
-                EC.visibility_of_element_located((by, locator)) # this is explicitly wait in selenium
+                EC.visibility_of_element_located((by, locator))
             )
             print("Element " + locator + " Found")
             return element
@@ -64,7 +64,7 @@ class MakeAction(object):
             return None
 
     def find_element_and_input(self, by: str, locator: str, wait: int, text: str):
-        element = self.find_elements(by, locator, wait) # check the method of finding the location
+        element = self.find_elements(by, locator, wait)
         if element:
             element.send_keys(text)
             return True
@@ -76,7 +76,7 @@ class MakeAction(object):
 
         try:
             element = WebDriverWait(self.driver, int(wait)).until(
-                EC.visibility_of_all_elements_located((by, locator))  # this is explicitly wait in selenium
+                EC.visibility_of_all_elements_located((by, locator))
             )
             for i in element:
                 if i.text == selectItem:
